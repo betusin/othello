@@ -1,4 +1,4 @@
-from typing import Optional, List, Tuple
+from typing import Optional, List, Tuple, Callable
 
 
 def new_playground(size: int) -> List[List[str]]:
@@ -158,14 +158,19 @@ def get_size() -> Optional[int]:
     return int(size)
 
 
-def get_row_pos(size: int) -> int:
-    row = input("Enter the line number where "
-                "you want to place your character: ")
+def get_pos(size: int, check_function: Callable[[int, str], bool], text: str) -> str:
+    pos = input(text)
 
-    while not check_row(size, row):
-        row = input("Enter the letter of the column where"
-                    " you want to place your character: ")
-    return int(row)
+    while not check_function(size, pos):
+        pos = input(text)
+
+    return pos
+
+
+
+def get_row_pos(size: int) -> int:
+    return int(get_pos(size, check_row,
+        "Enter the line number where you want to place your character: "))
 
 
 def check_row(size: int, row: str) -> bool:
@@ -183,17 +188,16 @@ def check_row(size: int, row: str) -> bool:
 
 
 def get_col_pos(size: int) -> int:
-    char_col = input("Enter the letter of the column where"
-                     " you want to place your character: ").upper()
+    char_col = get_pos(size, check_col,
+        "Enter the letter of the column where you want to place your character: ")
 
-    while not check_col(size, char_col):
-        char_col = input("Enter the letter of the column where"
-                         " you want to place your character: ").upper()
     col = ord(char_col) - ord('A')
     return int(col)
 
 
 def check_col(size: int, char_col: str) -> bool:
+    char_col = char_col.upper()
+
     if len(char_col) > 1:
         print("You didn't enter a letter, but text. You can only"
               " enter one letter from A to", chr(ord('A') + size - 1))
