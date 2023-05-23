@@ -160,11 +160,11 @@ def get_size() -> Optional[int]:
 
 def get_row_pos(size: int) -> int:
     row = input("Enter the line number where "
-                "you want to place your character:")
+                "you want to place your character: ")
 
     while not check_row(size, row):
         row = input("Enter the letter of the column where"
-                    " you want to place your character:")
+                    " you want to place your character: ")
     return int(row)
 
 
@@ -184,11 +184,11 @@ def check_row(size: int, row: str) -> bool:
 
 def get_col_pos(size: int) -> int:
     char_col = input("Enter the letter of the column where"
-                     " you want to place your character:").upper()
+                     " you want to place your character: ").upper()
 
     while not check_col(size, char_col):
         char_col = input("Enter the letter of the column where"
-                         " you want to place your character:").upper()
+                         " you want to place your character: ").upper()
     col = ord(char_col) - ord('A')
     return int(col)
 
