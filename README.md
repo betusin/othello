@@ -21,6 +21,6 @@ At the end of the game, all of the disks on the board are counted and the player
 
 ## How to start?
 
-Simply run the .py file in your Python interpreter, CLI will appear and you can start
-with inserting coordinates of disk you want to reveal!
+Simply run the `othello.py` file in your Python interpreter, CLI will appear and you can start
+the game with inserting coordinates of disk you want to reveal!
 
